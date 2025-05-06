@@ -16,8 +16,8 @@ public class Level0 implements Level {
 	private double buttonHeight = 150;
     @Override
     public void enter() {
-    	background = new Image(getClass().getResource("/resources/menu_background.png").toExternalForm());
-    	startButtonImage = new Image(getClass().getResource("/resources/start_btn.png").toExternalForm());
+    	background = new Image(getClass().getResource("/menu_background.png").toExternalForm());
+    	startButtonImage = new Image(getClass().getResource("/start_btn.png").toExternalForm());
            }
     
     
