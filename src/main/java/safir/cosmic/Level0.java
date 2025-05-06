@@ -15,7 +15,7 @@ public class Level0 implements Level {
 
         startButton = GameObjectFactory.createUIButton(
         	    gc,
-        	    275, 270, // ⬅ centered horizontally & raised vertically
+        	    275, 270, 
         	    250, 150,
         	    "/start_btn.png",
         	    () -> LevelManager.getInstance().switchTo(new Level1(), gc)
@@ -23,7 +23,7 @@ public class Level0 implements Level {
 
         	leaveButton = GameObjectFactory.createUIButton(
         	    gc,
-        	    275, 420, // ⬅ same horizontal center, placed below start button
+        	    275, 420, 
         	    250, 150,
         	    "/leave_btn.png",
         	    () -> Platform.exit()
@@ -32,7 +32,7 @@ public class Level0 implements Level {
 
     @Override
     public void exit() {
-        // no visual node to remove in this setup
+       
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Level0 implements Level {
 
     @Override
     public boolean handleClick(MouseEvent e) {
-        // Start button first, then leave
+       
         return startButton.handleClick(e) || leaveButton.handleClick(e);
     }
 }

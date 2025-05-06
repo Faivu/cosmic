@@ -13,7 +13,7 @@ public class GameManager {
     private GraphicsContext gc;
     
 
-    // ✅ Fixed constructor to include root
+    
     public GameManager(GraphicsContext gc) {
         this.gc = gc;
         

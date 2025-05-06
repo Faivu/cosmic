@@ -20,7 +20,7 @@ public class App extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         root = new Group(canvas);
 
-        // ✅ Fixed: pass both gc and root
+        
         gameManager = new GameManager(gc);
         gameManager.startGame();
         
