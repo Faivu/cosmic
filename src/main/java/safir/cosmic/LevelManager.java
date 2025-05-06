@@ -9,10 +9,10 @@ import javafx.scene.control.Button;
 public class LevelManager {
 	private static Level currentLevel;
 
-    public static void switchTo(Level newLevel) {
+    public static void switchTo(Level newLevel, GraphicsContext gc) {
         if (currentLevel != null) currentLevel.exit();
         currentLevel = newLevel;
-        currentLevel.enter();
+        currentLevel.enter(gc);
     }
 
     public static void update(GraphicsContext gc) {

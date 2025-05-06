@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 public class Level1 implements Level {
 
 	@Override
-	public void enter() {
+	public void enter(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 
 	}

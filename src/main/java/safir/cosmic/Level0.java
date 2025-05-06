@@ -1,51 +1,50 @@
 package safir.cosmic;
 
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 public class Level0 implements Level {
-	
+    private Background background;
+    private UIButton startButton;
+    private UIButton leaveButton;
 
-	private Image background;
-	private Image startButtonImage;
-	private double buttonX = 350;
-	private double buttonY = 280;
-	private double buttonWidth = 250;
-	private double buttonHeight = 150;
     @Override
-    public void enter() {
-    	background = new Image(getClass().getResource("/menu_background.png").toExternalForm());
-    	startButtonImage = new Image(getClass().getResource("/start_btn.png").toExternalForm());
-           }
-    
-    
+    public void enter(GraphicsContext gc) {
+        background = GameObjectFactory.createBackground(gc, "/menu_background.png");
+
+        startButton = GameObjectFactory.createButton(
+        	    gc,
+        	    275, 270, // ⬅ centered horizontally & raised vertically
+        	    250, 150,
+        	    "/start_btn.png",
+        	    () -> LevelManager.switchTo(new Level1(), gc)
+        	);
+
+        	leaveButton = GameObjectFactory.createButton(
+        	    gc,
+        	    275, 420, // ⬅ same horizontal center, placed below start button
+        	    250, 150,
+        	    "/leave_btn.png",
+        	    () -> Platform.exit()
+        	);
+    }
 
     @Override
     public void exit() {
-        //App.getRoot().getChildren().remove(//smtg);
+        // no visual node to remove in this setup
     }
 
     @Override
     public void update(GraphicsContext gc) {
-        gc.drawImage(background, 0, 0, 800, 600);
-        gc.drawImage(startButtonImage, buttonX, buttonY, buttonWidth, buttonHeight);
+        background.update();
+        startButton.draw();
+        leaveButton.draw();
     }
 
     @Override
     public boolean handleClick(MouseEvent e) {
-        double mx = e.getX();
-        double my = e.getY();
-
-        boolean clicked = mx >= buttonX && mx <= buttonX + buttonWidth &&
-                          my >= buttonY && my <= buttonY + buttonHeight;
-
-        if (clicked) {
-            LevelManager.switchTo(new Level1());
-            return true;
-        }
-        return false;
+        // Start button first, then leave
+        return startButton.handleClick(e) || leaveButton.handleClick(e);
     }
-
 }

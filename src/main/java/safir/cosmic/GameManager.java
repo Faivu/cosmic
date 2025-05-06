@@ -23,7 +23,7 @@ public class GameManager {
     }
 
     public void startGame() {
-        levelManager.switchTo(new Level0());
+        levelManager.switchTo(new Level0(), gc);
         
     }
 
