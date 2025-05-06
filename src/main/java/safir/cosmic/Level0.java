@@ -13,15 +13,15 @@ public class Level0 implements Level {
     public void enter(GraphicsContext gc) {
         background = GameObjectFactory.createBackground(gc, "/menu_background.png");
 
-        startButton = GameObjectFactory.createButton(
+        startButton = GameObjectFactory.createUIButton(
         	    gc,
         	    275, 270, // ⬅ centered horizontally & raised vertically
         	    250, 150,
         	    "/start_btn.png",
-        	    () -> LevelManager.switchTo(new Level1(), gc)
+        	    () -> LevelManager.getInstance().switchTo(new Level1(), gc)
         	);
 
-        	leaveButton = GameObjectFactory.createButton(
+        	leaveButton = GameObjectFactory.createUIButton(
         	    gc,
         	    275, 420, // ⬅ same horizontal center, placed below start button
         	    250, 150,
@@ -38,8 +38,8 @@ public class Level0 implements Level {
     @Override
     public void update(GraphicsContext gc) {
         background.update();
-        startButton.draw();
-        leaveButton.draw();
+        startButton.update();
+        leaveButton.update();
     }
 
     @Override

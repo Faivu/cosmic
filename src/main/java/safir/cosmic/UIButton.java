@@ -13,7 +13,7 @@ public class UIButton extends InteractiveObject {
         this.onClick = onClick;
     }
 
-    public void draw() {
+    public void update() {
         gc.drawImage(img, x, y, getWidth(), getHeight());
     }
 

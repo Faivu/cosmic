@@ -33,7 +33,7 @@ public class App extends Application {
             @Override
             public void handle(long now) {
                 gc.clearRect(0, 0, 800, 600);
-                gameManager.update();
+                LevelManager.getInstance().update(gc);
             }
         }.start();
 

@@ -9,7 +9,7 @@ public class GameManager {
 
     private LevelManager levelManager;
    
-    private HintManager hintManager;
+    
     private GraphicsContext gc;
     
 
@@ -17,13 +17,13 @@ public class GameManager {
     public GameManager(GraphicsContext gc) {
         this.gc = gc;
         
-        this.levelManager = new LevelManager();
-        
-        this.hintManager = new HintManager();
+        this.levelManager = LevelManager.getInstance();
+ 
     }
 
-    public void startGame() {
-        levelManager.switchTo(new Level0(), gc);
+
+	public void startGame() {
+		LevelManager.getInstance().switchTo(new Level0(), gc);
         
     }
 
